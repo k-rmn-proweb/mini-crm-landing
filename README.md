@@ -4,10 +4,10 @@ The marketing site for [Mini-CRM](https://github.com/k-rmn-proweb/mini-crm-supab
 a small production-grade CRM. Built to be fast, accessible and search-friendly
 rather than merely pretty.
 
-**🔗 Live site: _to be filled in after the first deploy_**
+**🔗 Live site: [mini-crm-landing.vercel.app](https://mini-crm-landing.vercel.app/)**
 · **Product demo: [mini-crm-supabase-silk.vercel.app](https://mini-crm-supabase-silk.vercel.app/)**
 
-Lighthouse on the production build: **97 performance · 100 accessibility ·
+Lighthouse against the deployed site: **95 performance · 100 accessibility ·
 100 best practices · 100 SEO**, with a cumulative layout shift of 0.
 
 ---

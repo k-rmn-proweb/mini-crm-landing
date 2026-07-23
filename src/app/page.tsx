@@ -1,3 +1,5 @@
+import { Contact } from "@/components/sections/contact";
+import { Cta } from "@/components/sections/cta";
 import { Features } from "@/components/sections/features";
 import { Hero } from "@/components/sections/hero";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -10,6 +12,8 @@ export default function HomePage() {
       <Features />
       <HowItWorks />
       <Tech />
+      <Cta />
+      <Contact />
     </>
   );
 }

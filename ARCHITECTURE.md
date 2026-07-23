@@ -24,13 +24,21 @@ src/
 │   └── sections/           # One file per landing section, in page order
 │
 ├── content/                # All user-facing copy, as typed const objects
-├── config/                 # Identity, external links, section anchors, env
-├── lib/                    # Framework-adjacent logic: utils, schemas, actions, clients
+├── config/
+│   ├── site.ts             # Identity, external links, section anchors
+│   └── env.ts              # Validated server environment (server-only)
+├── lib/
+│   ├── utils.ts            # cn()
+│   ├── supabase.ts         # Supabase client (server-only)
+│   ├── schemas/            # Zod schemas + inferred types
+│   └── actions/            # "use server" mutations
 ├── hooks/                  # Shared client hooks (created when a second consumer appears)
 └── types/                  # Cross-cutting types (created only when actually shared)
 
 public/
 └── images/                 # Screenshots and static imagery
+
+supabase/                   # SQL run against the project by hand, kept in the repo
 ```
 
 ## The rules

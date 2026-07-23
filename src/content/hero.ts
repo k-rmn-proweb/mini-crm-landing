@@ -3,7 +3,7 @@ export const heroContent = {
   title: "A CRM small enough to actually use",
   description:
     "Mini-CRM keeps clients, deals and analytics on one screen. Drag a deal across the pipeline and the dashboard updates in realtime — no setup, no clutter.",
-  note: "Free and open source. Running on Vercel and Supabase.",
+  note: "One click to log in as demo — no sign-up. Free and open source.",
 
   /**
    * Illustrative board shown in the hero. Stages mirror the real app's

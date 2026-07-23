@@ -21,10 +21,13 @@ Lighthouse against the deployed site: **95 performance · 100 accessibility ·
   is built from real DOM, so it stays sharp at any pixel density, follows the
   active theme and costs no image bytes. Its pipeline stages mirror the real
   app: `new → negotiation → won/lost`.
-- **Security lives in the database.** The contact form writes through a Server
-  Action using Supabase's public anon key. The `leads` table grants that role
-  `INSERT` and nothing else — no select, update or delete policy exists — so a
-  leaked key cannot read anyone's messages.
+- **Security and rate limiting live in the database.** The contact form writes
+  through a Server Action using Supabase's anon key, whose only capability is
+  executing one `SECURITY DEFINER` function. That function counts recent
+  submissions from the sender before appending, so the limit cannot be
+  bypassed — and it holds across serverless invocations, which share no memory
+  and would defeat an in-process counter. The table itself grants the anon role
+  no policy at all, so a leaked key reads nothing.
 - **Copy is data.** Every user-facing string lives in `src/content`, which
   keeps section components down to layout and makes rewording a one-file
   change.
@@ -60,15 +63,16 @@ npm run dev
 Then open [http://localhost:3000](http://localhost:3000).
 
 The site renders without any environment variables — only the contact form
-needs them. To make it work, run [`supabase/leads.sql`](./supabase/leads.sql)
-in your Supabase project's SQL editor and fill in `.env.local`.
+needs them. To make it work, run the scripts in [`supabase/`](./supabase) in
+numeric order in your project's SQL editor, then fill in `.env.local`.
 
 ### Environment
 
 | Variable            | Required | Purpose                                                      |
 | ------------------- | -------- | ------------------------------------------------------------ |
 | `SUPABASE_URL`      | for form | Supabase project URL                                         |
-| `SUPABASE_ANON_KEY` | for form | Public anon key; the table's RLS policy limits it to inserts |
+| `SUPABASE_ANON_KEY` | for form | Anon key; may only execute `submit_lead`                     |
+| `RATE_LIMIT_SALT`   | in prod  | Salts the hashed sender IP the rate limit groups by          |
 | `SITE_URL`          | no       | Canonical origin. Falls back to the Vercel production domain |
 
 None are prefixed with `NEXT_PUBLIC_`, so none reach the browser.

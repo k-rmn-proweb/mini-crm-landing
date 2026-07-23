@@ -26,6 +26,10 @@ export const contactContent = {
   failure:
     "Something went wrong on our side. Please try again, or reach me through the GitHub link in this section.",
 
+  /** Shown when the sender has already used up their hourly allowance. */
+  rateLimited:
+    "You have already sent a few messages. Please try again in an hour, or reach me through the GitHub link in this section.",
+
   /** Validation messages live here too — they are user-facing copy. */
   errors: {
     nameMin: "Please enter your name.",

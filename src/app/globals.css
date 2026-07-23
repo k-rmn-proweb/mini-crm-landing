@@ -18,9 +18,13 @@
   --surface: oklch(1 0 0);
   --surface-hover: oklch(0.975 0.003 277);
 
+  /*
+   * Lightness steps are chosen so the two quieter tones still clear WCAG AA
+   * (4.5:1) on canvas, canvas-subtle and surface — verified, not eyeballed.
+   */
   --ink: oklch(0.21 0.02 277);
-  --ink-muted: oklch(0.53 0.02 277);
-  --ink-faint: oklch(0.68 0.015 277);
+  --ink-muted: oklch(0.45 0.02 277);
+  --ink-faint: oklch(0.55 0.015 277);
 
   --edge: oklch(0.92 0.006 277);
   --edge-strong: oklch(0.86 0.01 277);
@@ -43,7 +47,7 @@
 
   --ink: oklch(0.97 0.005 277);
   --ink-muted: oklch(0.72 0.02 277);
-  --ink-faint: oklch(0.56 0.02 277);
+  --ink-faint: oklch(0.64 0.02 277);
 
   --edge: oklch(0.28 0.02 277);
   --edge-strong: oklch(0.36 0.025 277);

@@ -1,7 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
+import { brandColors } from "@/config/brand";
+import { siteConfig } from "@/config/site";
 import { metaContent } from "@/content/meta";
+import { structuredData } from "@/lib/structured-data";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ThemeProvider } from "@/components/layout/theme-provider";
@@ -21,8 +24,51 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: metaContent.title,
+  // Makes every relative URL below — canonical, OG image — absolute.
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: metaContent.title,
+    template: metaContent.titleTemplate,
+  },
   description: metaContent.description,
+  applicationName: siteConfig.name,
+  keywords: [...metaContent.keywords],
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+  creator: siteConfig.author.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: metaContent.title,
+    description: metaContent.description,
+    locale: siteConfig.locale,
+    // The image comes from app/opengraph-image.tsx by file convention.
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: metaContent.title,
+    description: metaContent.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: brandColors.canvasLight },
+    { media: "(prefers-color-scheme: dark)", color: brandColors.canvasDark },
+  ],
 };
 
 export default function RootLayout({
@@ -44,6 +90,13 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
+
+        {/* Structured data: rendered last so it never delays the content. */}
+        <script
+          type="application/ld+json"
+          // Serialised from a typed object we control — no user input reaches it.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </body>
     </html>
   );

@@ -41,7 +41,9 @@ function ClientsVisual() {
                 "rounded-full px-2 py-0.5 text-[10px] font-medium",
                 status === "Active"
                   ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-                  : "bg-brand/15 text-brand",
+                  : // Brand at its base lightness misses 4.5:1 on its own
+                    // 15% tint in dark mode; the hover step clears it.
+                    "bg-brand/15 text-brand dark:text-brand-hover",
               )}
             >
               {status}

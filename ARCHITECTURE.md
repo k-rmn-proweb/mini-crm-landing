@@ -95,8 +95,14 @@ client talks to the backend; no API routes for form handling.
 A `"use server"` module may only export async functions, so Zod schemas cannot
 live next to the action that uses them:
 
-- `lib/schemas/contact.ts` — schema + inferred types (importable from client)
+- `lib/schemas/contact.ts` — Zod schema, server side only
 - `lib/actions/contact.ts` — `"use server"`, imports the schema
+- `lib/contact-form-state.ts` — the state and constants the client form needs
+
+The third file exists for weight, not tidiness: anything a Client Component
+imports is downloaded by the browser, so a form importing its state from the
+schema module would ship all of Zod with it. Types may cross the line freely —
+`import type` is erased before bundling.
 
 **8. Naming.**
 Files and folders `kebab-case`. Components `PascalCase`. Hooks `useCamelCase`.
@@ -112,6 +118,14 @@ Tailwind v4 keeps its tokens in CSS. All of them — colors, fonts, spacing,
 easing — are declared in `app/globals.css` under `@theme`. No component-level
 `.css` files, no inline hex values in JSX: if a value is worth reusing, it is a
 token.
+
+The one exception is `config/brand.ts`, which mirrors a few tokens as hex for
+the two places that sit outside the CSS cascade and cannot read custom
+properties: the OG image renderer and the `theme-color` meta tag.
+
+Quiet text tones (`ink-muted`, `ink-faint`) are set at lightness values that
+clear WCAG AA on every background they appear on. Changing them is a
+contrast decision, not a taste one — re-check before adjusting.
 
 ## Import order
 

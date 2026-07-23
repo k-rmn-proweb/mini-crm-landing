@@ -4,7 +4,14 @@
  */
 export const siteConfig = {
   name: "Mini-CRM",
+  /** Absolute origin. Every canonical, OG and sitemap URL is built from it. */
   url: "https://mini-crm-landing.vercel.app",
+  locale: "en_US",
+  author: {
+    // TODO: replace with the real display name before launch.
+    name: "k-rmn-proweb",
+    url: "https://github.com/k-rmn-proweb",
+  },
   links: {
     demo: "https://mini-crm-supabase-silk.vercel.app/",
     github: "https://github.com/k-rmn-proweb/mini-crm-supabase",

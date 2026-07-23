@@ -9,7 +9,7 @@ import {
   emptyContactValues,
   HONEYPOT_FIELD,
   initialContactFormState,
-} from "@/lib/schemas/contact";
+} from "@/lib/contact-form-state";
 import { Button } from "@/components/ui/button";
 import { Field, Input, Textarea } from "@/components/ui/field";
 

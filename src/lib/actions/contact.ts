@@ -4,11 +4,11 @@ import { z } from "zod";
 
 import { contactContent } from "@/content/contact";
 import {
-  contactSchema,
   HONEYPOT_FIELD,
   type ContactFormState,
   type ContactValues,
-} from "@/lib/schemas/contact";
+} from "@/lib/contact-form-state";
+import { contactSchema } from "@/lib/schemas/contact";
 import { createSupabaseClient } from "@/lib/supabase";
 
 export async function submitContact(

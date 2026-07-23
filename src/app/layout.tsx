@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { brandColors } from "@/config/brand";
 import { siteConfig } from "@/config/site";
+import { siteUrl } from "@/config/site-url";
 import { metaContent } from "@/content/meta";
 import { structuredData } from "@/lib/structured-data";
 import { Footer } from "@/components/layout/footer";
@@ -25,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   // Makes every relative URL below — canonical, OG image — absolute.
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: metaContent.title,
     template: metaContent.titleTemplate,
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: siteConfig.url,
+    url: siteUrl,
     siteName: siteConfig.name,
     title: metaContent.title,
     description: metaContent.description,

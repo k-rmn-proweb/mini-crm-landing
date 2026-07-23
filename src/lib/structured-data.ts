@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { siteUrl } from "@/config/site-url";
 import { metaContent } from "@/content/meta";
 
 /**
@@ -10,16 +11,16 @@ export const structuredData = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": `${siteConfig.url}/#website`,
-      url: siteConfig.url,
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
       name: siteConfig.name,
       description: metaContent.description,
       inLanguage: "en",
-      publisher: { "@id": `${siteConfig.url}/#person` },
+      publisher: { "@id": `${siteUrl}/#person` },
     },
     {
       "@type": "Person",
-      "@id": `${siteConfig.url}/#person`,
+      "@id": `${siteUrl}/#person`,
       name: siteConfig.author.name,
       url: siteConfig.author.url,
     },
@@ -30,7 +31,7 @@ export const structuredData = {
       operatingSystem: "Web",
       url: siteConfig.links.demo,
       description: metaContent.description,
-      author: { "@id": `${siteConfig.url}/#person` },
+      author: { "@id": `${siteUrl}/#person` },
       offers: {
         "@type": "Offer",
         price: "0",

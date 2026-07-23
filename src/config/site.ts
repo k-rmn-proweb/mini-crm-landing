@@ -4,8 +4,6 @@
  */
 export const siteConfig = {
   name: "Mini-CRM",
-  /** Absolute origin. Every canonical, OG and sitemap URL is built from it. */
-  url: "https://mini-crm-landing.vercel.app",
   locale: "en_US",
   author: {
     name: "Konstantin Ramazanov",

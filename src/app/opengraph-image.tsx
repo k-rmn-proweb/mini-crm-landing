@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 
 import { brandColors } from "@/config/brand";
 import { siteConfig } from "@/config/site";
+import { siteHost } from "@/config/site-url";
 import { metaContent } from "@/content/meta";
 
 export const size = { width: 1200, height: 630 };
@@ -132,7 +133,7 @@ export default function OpengraphImage() {
       >
         <div style={{ display: "flex" }}>{metaContent.og.footer}</div>
         <div style={{ display: "flex", color: brandColors.inkFaintDark }}>
-          {siteConfig.url.replace("https://", "")}
+          {siteHost}
         </div>
       </div>
     </div>,

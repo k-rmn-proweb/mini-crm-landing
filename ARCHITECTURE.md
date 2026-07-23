@@ -60,6 +60,11 @@ A link's `href` is config, its label is content.
 `ui/` is also where `shadcn/ui` drops its components, so the boundary stays
 intact when we add one.
 
+A section that grows a supporting part keeps it next to the section, named
+after it — `sections/hero.tsx` + `sections/hero-visual.tsx`. The prefix keeps
+the folder sorted by section rather than by component, so everything belonging
+to one band of the page stays adjacent.
+
 **5. Dependencies point one way.**
 
 ```

@@ -26,6 +26,9 @@
   --edge-strong: oklch(0.86 0.01 277);
 
   --ring: var(--brand);
+
+  /* Radial bloom behind the hero visual. */
+  --glow: oklch(0.515 0.24 277 / 0.16);
 }
 
 .dark {
@@ -46,6 +49,8 @@
   --edge-strong: oklch(0.36 0.025 277);
 
   --ring: var(--brand);
+
+  --glow: oklch(0.62 0.19 277 / 0.28);
 }
 
 /*
@@ -70,6 +75,7 @@
   --color-edge-strong: var(--edge-strong);
 
   --color-ring: var(--ring);
+  --color-glow: var(--glow);
 
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);

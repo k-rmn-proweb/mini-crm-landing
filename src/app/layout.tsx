@@ -7,7 +7,7 @@ import { metaContent } from "@/content/meta";
 import { structuredData } from "@/lib/structured-data";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Providers } from "@/components/layout/providers";
 
 import "./globals.css";
 
@@ -85,11 +85,20 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="flex min-h-dvh flex-col">
-        <ThemeProvider>
+        {/*
+          Scroll-reveal blocks are server-rendered at opacity 0 and only become
+          visible once Motion runs. Without scripting they would stay invisible,
+          so reveal them outright.
+        */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+
+        <Providers>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-        </ThemeProvider>
+        </Providers>
 
         {/* Structured data: rendered last so it never delays the content. */}
         <script

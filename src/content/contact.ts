@@ -23,7 +23,8 @@ export const contactContent = {
   },
 
   /** Shown when the write itself fails, so the visitor is not left guessing. */
-  failure: `Something went wrong on our side. Please try again, or email me from the GitHub profile linked below.`,
+  failure:
+    "Something went wrong on our side. Please try again, or reach me through the GitHub link in this section.",
 
   /** Validation messages live here too — they are user-facing copy. */
   errors: {

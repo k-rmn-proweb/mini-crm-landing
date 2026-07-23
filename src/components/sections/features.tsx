@@ -11,6 +11,7 @@ import {
 import { sectionIds } from "@/config/site";
 import { featuresContent } from "@/content/features";
 import { Card } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 import { Section, SectionHeader } from "@/components/ui/section";
 
 type FeatureId = (typeof featuresContent.items)[number]["id"];
@@ -32,25 +33,34 @@ const icons: Record<FeatureId, LucideIcon> = {
 export function Features() {
   return (
     <Section id={sectionIds.features} tone="subtle">
-      <SectionHeader
-        eyebrow={featuresContent.eyebrow}
-        title={featuresContent.title}
-        description={featuresContent.description}
-      />
+      <Reveal>
+        <SectionHeader
+          eyebrow={featuresContent.eyebrow}
+          title={featuresContent.title}
+          description={featuresContent.description}
+        />
+      </Reveal>
 
       <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {featuresContent.items.map((item) => {
+        {featuresContent.items.map((item, index) => {
           const Icon = icons[item.id];
           return (
-            <Card key={item.id} className="flex flex-col gap-3">
-              <span className="flex size-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                <Icon className="size-5" aria-hidden />
-              </span>
-              <h3 className="font-semibold">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-ink-muted">
-                {item.description}
-              </p>
-            </Card>
+            <Reveal
+              key={item.id}
+              // Stagger by column so a row appears to land together.
+              delay={(index % 3) * 0.08}
+              className="h-full"
+            >
+              <Card interactive className="flex h-full flex-col gap-3">
+                <span className="flex size-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <h3 className="font-semibold">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-ink-muted">
+                  {item.description}
+                </p>
+              </Card>
+            </Reveal>
           );
         })}
       </div>

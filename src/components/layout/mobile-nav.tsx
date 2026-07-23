@@ -5,6 +5,7 @@ import { MenuIcon, XIcon } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { actionsContent, navContent } from "@/content/nav";
+import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 /** Header navigation below the `md` breakpoint. */
@@ -45,7 +46,7 @@ export function MobileNav() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className={buttonVariants({ size: "md", className: "mt-3" })}
+              className={cn(buttonVariants({ size: "md" }), "mt-3")}
             >
               {actionsContent.demo}
             </a>

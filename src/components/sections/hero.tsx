@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { GithubIcon } from "@/components/ui/icons";
+import { Reveal } from "@/components/ui/reveal";
 import { HeroVisual } from "@/components/sections/hero-visual";
 
 export function Hero() {
@@ -49,8 +50,15 @@ export function Hero() {
         </div>
       </Container>
 
+      {/*
+        The visual is the only part of the hero that animates. The heading and
+        paragraph above it render immediately — the paragraph is the LCP
+        element, and starting it transparent would delay the metric it sets.
+      */}
       <Container className="mt-14 max-w-5xl">
-        <HeroVisual />
+        <Reveal>
+          <HeroVisual />
+        </Reveal>
       </Container>
     </section>
   );

@@ -8,8 +8,7 @@ export const siteConfig = {
   url: "https://mini-crm-landing.vercel.app",
   locale: "en_US",
   author: {
-    // TODO: replace with the real display name before launch.
-    name: "k-rmn-proweb",
+    name: "Konstantin Ramazanov",
     url: "https://github.com/k-rmn-proweb",
   },
   links: {

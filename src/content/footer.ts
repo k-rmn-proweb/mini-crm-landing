@@ -2,7 +2,8 @@ import { sectionIds, siteConfig } from "@/config/site";
 
 export const footerContent = {
   tagline: "A lightweight CRM for clients, deals and analytics.",
-  builtWith: "Built with Next.js, Tailwind CSS and Supabase.",
+  /** About this site, not the product — hence the explicit subject. */
+  builtWith: "This site is built with Next.js and Tailwind CSS.",
   groups: [
     {
       title: "Product",

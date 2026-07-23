@@ -12,7 +12,6 @@ export const heroContent = {
   preview: {
     label:
       "Mini-CRM deal board with New, Negotiation, Won and Lost pipeline columns",
-    address: "mini-crm-supabase.vercel.app",
     nav: ["Dashboard", "Clients", "Deals"],
     activeNav: "Deals",
     stats: [

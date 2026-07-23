@@ -2,8 +2,10 @@
 export const metaContent = {
   title: "Mini-CRM — a small CRM that feels fast",
   titleTemplate: "%s — Mini-CRM",
+  // Describes the product, which is a Vite/React app — Next.js is this site,
+  // not the CRM. Getting that backwards is the first thing a reader would spot.
   description:
-    "Clients, deals and analytics in one lightweight CRM. Built with Next.js, React and Supabase.",
+    "Clients, deals and analytics in one lightweight CRM. Built with React, TanStack Query and Supabase.",
 
   /** Search keywords, ordered from most to least specific. */
   keywords: [

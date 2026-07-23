@@ -115,8 +115,21 @@
   }
 }
 
+/*
+ * One switch for everyone who asked for less movement. Motion components check
+ * this separately via useReducedMotion; this covers every CSS transition,
+ * hover lift and smooth scroll without each component opting in.
+ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

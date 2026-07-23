@@ -5,10 +5,14 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { siteConfig } from "@/config/site";
 import { heroContent } from "@/content/hero";
 import { cn } from "@/lib/utils";
 
 const { preview } = heroContent;
+
+/** The window chrome shows the demo's real host, not an invented one. */
+const demoHost = new URL(siteConfig.links.demo).host;
 
 const stageTone: Record<string, string> = {
   neutral: "bg-ink-faint",
@@ -54,7 +58,7 @@ export function HeroVisual() {
             <span className="size-2.5 rounded-full bg-emerald-400/70" />
           </div>
           <div className="mx-auto hidden max-w-xs flex-1 rounded-md border border-edge bg-surface px-3 py-1 text-center font-mono text-[11px] text-ink-faint sm:block">
-            {preview.address}
+            {demoHost}
           </div>
         </div>
 

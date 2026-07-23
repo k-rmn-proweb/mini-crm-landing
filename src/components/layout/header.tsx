@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { actionsContent, navContent } from "@/content/nav";
+import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/layout/logo";
@@ -31,10 +32,13 @@ export function Header() {
             href={siteConfig.links.demo}
             target="_blank"
             rel="noreferrer"
-            className={buttonVariants({
-              size: "sm",
-              className: "hidden md:inline-flex",
-            })}
+            // Through cn(), not cva's className: cva concatenates, so the
+            // variant's own `inline-flex` would outrank `hidden` and the button
+            // would stay visible on mobile. tailwind-merge resolves the clash.
+            className={cn(
+              buttonVariants({ size: "sm" }),
+              "hidden md:inline-flex",
+            )}
           >
             {actionsContent.demo}
           </a>
